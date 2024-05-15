@@ -9,14 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// coffeeMaster
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASS);
-// GsTb312YAtwas03J
-
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.09vuo6e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-// const uri =
-//   "mongodb+srv://<username>:<password>@cluster0.09vuo6e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
