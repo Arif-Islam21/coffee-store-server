@@ -80,6 +80,18 @@ async function run() {
 
     // USER RELATED APIS
 
+    app.patch("/users", async (req, res) => {
+      const user = req.body;
+      const filter = { email: user.email };
+      const updatedDoc = {
+        $set: {
+          lastLoggedAt: user.lastLoggedAt,
+        },
+      };
+      const result = await userCollection.updateOne(filter, updatedDoc);
+      res.send(result);
+    });
+
     app.get("/users", async (req, res) => {
       const cursor = userCollection.find();
       const users = await cursor.toArray();
